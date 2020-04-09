@@ -47,7 +47,7 @@ public class IndicadoresService {
     }
 
     public Response consultarIndicador(Integer indicador) throws Exception {
-        String date = formatter.format(LocalDate.now(zoneId));
+        String date = toString(LocalDate.now(zoneId));
         Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, date, date, name, SubNivel.N, email, token);
         Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));
         return Response.ok(indicadores.getIndicadores().get(0)).build();
