@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 /**
@@ -17,6 +18,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 @RegisterRestClient
+@RegisterProvider(IndicadorExceptionMapper.class)
 public interface IndicadoresClient {
 
     @GET
@@ -28,6 +30,6 @@ public interface IndicadoresClient {
             @QueryParam("SubNiveles") SubNivel subNiveles,
             @QueryParam("CorreoElectronico") String correoElectronico,
             @QueryParam("Token") String token
-    );
+    ) throws IndicadorException;
 
 }
