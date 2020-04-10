@@ -26,7 +26,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @RequestScoped
 @Path("/indicadores")
 @Produces({MediaType.APPLICATION_JSON})
-@Tag(name = "Servicio de Indicadores Economicos", description = "Obtiene la informacion de los Indicadores Economicos del BCCR")
+@Tag(name = "Servicio de Indicadores Económicos", description = "Obtiene la información de los Indicadores Económicos del BCCR")
 public class IndicadoresController {
 
     private static final int DOLAR_COMPRA = 317;
@@ -35,10 +35,14 @@ public class IndicadoresController {
     @Inject
     private IndicadoresService indicadoresService;
 
-    @Operation(description = "Obtiene el tipo de cambio del dolar para la compra para el dia de hoy")
+    @Operation(description = "Obtiene el tipo de cambio del dolar para la compra para el día de hoy")
     @APIResponse(
             responseCode = "200",
-            description = "Exito al obtener el tipo de cambio del dolar para el dia de hoy",
+            description = "Exito al obtener el tipo de cambio del dolar para el día de hoy",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+    @APIResponse(
+            responseCode = "400",
+            description = "Error al obtener el tipo de cambio del dolar para el día de hoy",
             content = @Content(mediaType = MediaType.APPLICATION_JSON))
     @GET
     @Path("/dolar/compra")
@@ -46,10 +50,14 @@ public class IndicadoresController {
         return indicadoresService.consultarIndicador(DOLAR_COMPRA);
     }
 
-    @Operation(description = "Obtiene el tipo de cambio del dolar para la venta para el dia de hoy")
+    @Operation(description = "Obtiene el tipo de cambio del dolar para la venta para el día de hoy")
     @APIResponse(
             responseCode = "200",
-            description = "Exito al obtener el tipo de cambio del dolar para el dia de hoy",
+            description = "Exito al obtener el tipo de cambio del dolar para el día de hoy",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+    @APIResponse(
+            responseCode = "400",
+            description = "Error al obtener el tipo de cambio del dolar para el día de hoy",
             content = @Content(mediaType = MediaType.APPLICATION_JSON))
     @GET
     @Path("/dolar/venta")
@@ -57,15 +65,19 @@ public class IndicadoresController {
         return indicadoresService.consultarIndicador(DOLAR_VENTA);
     }
 
-    @Operation(description = "Obtiene el valor del Indicador Economico indicado")
+    @Operation(description = "Obtiene el valor del Indicador Económico indicado")
     @APIResponse(
             responseCode = "200",
-            description = "Exito al obtener el valor del Indicador Economico indicado",
+            description = "Exito al obtener el valor del Indicador Económico indicado",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+    @APIResponse(
+            responseCode = "400",
+            description = "Error al obtener el valor del Indicador Económico indicado",
             content = @Content(mediaType = MediaType.APPLICATION_JSON))
     @GET
     @Path("/{indicador}")
     public Response indicador(
-            @Parameter(description = "Numero de Indicador Economico", required = true)
+            @Parameter(description = "Numero de Indicador Económico", required = true)
             @PathParam("indicador") Integer indicador,
             @Parameter(description = "Fecha inicial de la consulta", schema = @Schema(format = "date", type = SchemaType.STRING))
             @QueryParam("fechaInicial") LocalDate fechaInicial,
