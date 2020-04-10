@@ -39,11 +39,19 @@ public class IndicadoresController {
     @APIResponse(
             responseCode = "200",
             description = "Exito al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON,
+                    schema = @Schema(
+                            type = SchemaType.OBJECT,
+                            implementation = Indicador.class)))
     @APIResponse(
             responseCode = "400",
             description = "Error al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON,
+                    schema = @Schema(
+                            type = SchemaType.OBJECT,
+                            implementation = Payload.class)))
     @GET
     @Path("/dolar/compra")
     public Response dolarCompra() throws Exception {
@@ -54,11 +62,19 @@ public class IndicadoresController {
     @APIResponse(
             responseCode = "200",
             description = "Exito al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON,
+                    schema = @Schema(
+                            type = SchemaType.OBJECT,
+                            implementation = Indicador.class)))
     @APIResponse(
             responseCode = "400",
             description = "Error al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON,
+                    schema = @Schema(
+                            type = SchemaType.OBJECT,
+                            implementation = Payload.class)))
     @GET
     @Path("/dolar/venta")
     public Response dolarVenta() throws Exception {
@@ -69,11 +85,19 @@ public class IndicadoresController {
     @APIResponse(
             responseCode = "200",
             description = "Exito al obtener el valor del Indicador Económico indicado",
-            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON,
+                    schema = @Schema(
+                            type = SchemaType.ARRAY,
+                            implementation = Indicador.class)))
     @APIResponse(
             responseCode = "400",
             description = "Error al obtener el valor del Indicador Económico indicado",
-            content = @Content(mediaType = MediaType.APPLICATION_JSON))
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON,
+                    schema = @Schema(
+                            type = SchemaType.OBJECT,
+                            implementation = Payload.class)))
     @GET
     @Path("/{indicador}")
     public Response indicador(
