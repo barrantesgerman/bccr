@@ -1,1 +1,1 @@
-web: java -jar target/bccr.jar --http.port=$PORT
+web: java -jar target/bccr-microbundle.jar --port $PORT
