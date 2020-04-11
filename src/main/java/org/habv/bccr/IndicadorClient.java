@@ -19,7 +19,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @Consumes({MediaType.APPLICATION_JSON})
 @RegisterRestClient
 @RegisterProvider(IndicadorExceptionMapper.class)
-public interface IndicadoresClient {
+public interface IndicadorClient {
 
     @GET
     public Response obtenerIndicadoresEconomicosXmlGet(

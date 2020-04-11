@@ -27,13 +27,13 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Path("/indicadores")
 @Produces({MediaType.APPLICATION_JSON})
 @Tag(name = "Servicio de Indicadores Económicos", description = "Obtiene la información de los Indicadores Económicos del BCCR")
-public class IndicadoresController {
+public class IndicadorController {
 
     private static final int DOLAR_COMPRA = 317;
     private static final int DOLAR_VENTA = 318;
 
     @Inject
-    private IndicadoresService indicadoresService;
+    private IndicadorService indicadoresService;
 
     @Operation(description = "Obtiene el tipo de cambio del dolar para la compra para el día de hoy")
     @APIResponse(
