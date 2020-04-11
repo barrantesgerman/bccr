@@ -2,7 +2,6 @@ package org.habv.bccr;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
@@ -14,16 +13,15 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
  * @author Herman Barrantes
  */
 @ApplicationScoped
-public class IndicadoresService {
+public class IndicadorService {
 
-    private final DateTimeFormatter formatter;
     private final ZoneId zoneId;
 
     @Inject
     private JaxbService jaxb;
     @Inject
     @RestClient
-    private IndicadoresClient client;
+    private IndicadorClient client;
 
     @Inject
     @ConfigProperty(name = "bccr.name")
@@ -35,29 +33,25 @@ public class IndicadoresService {
     @ConfigProperty(name = "bccr.token")
     private String token;
 
-    public IndicadoresService() {
-        this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");//BCCR
+    public IndicadorService() {
         this.zoneId = ZoneId.of("-06:00");//CR
     }
 
     public Response consultarIndicador(Integer indicador, LocalDate fechaInicial, LocalDate fechaFinal, SubNivel subNivel) throws Exception {
-        Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, toString(fechaInicial), toString(fechaFinal), name, subNivel, email, token);
+        Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, checkNull(fechaInicial), checkNull(fechaFinal), name, subNivel, email, token);
         Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));
         return Response.ok(indicadores.getIndicadores()).build();
     }
 
     public Response consultarIndicador(Integer indicador) throws Exception {
-        String date = toString(LocalDate.now(zoneId));
-        Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, date, date, name, SubNivel.N, email, token);
+        LocalDate today = LocalDate.now(zoneId);
+        Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, today, today, name, SubNivel.N, email, token);
         Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));
         return Response.ok(indicadores.getIndicadores().get(0)).build();
     }
 
-    private String toString(LocalDate date) {
-        if (date == null) {
-            date = LocalDate.now(zoneId);
-        }
-        return formatter.format(date);
+    private LocalDate checkNull(LocalDate date) {
+        return date == null ? LocalDate.now(zoneId) : date;
     }
 
 }
