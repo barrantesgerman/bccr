@@ -19,7 +19,11 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
                         name = "Herman Barrantes",
                         email = "barrantesgerman@gmail.com",
                         url = "https://habv.org")
-        )
+        ),
+        servers = {
+            @Server(url = "https://habv-bccr.herokuapp.com/", description = "Heroku"),
+            @Server(url = "http://localhost:8080/", description = "localhost")
+        }
 )
 @ApplicationPath("/api")
 @ApplicationScoped
