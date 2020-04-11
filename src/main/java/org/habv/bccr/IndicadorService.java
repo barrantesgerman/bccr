@@ -14,7 +14,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
  * @author Herman Barrantes
  */
 @ApplicationScoped
-public class IndicadoresService {
+public class IndicadorService {
 
     private final DateTimeFormatter formatter;
     private final ZoneId zoneId;
@@ -23,7 +23,7 @@ public class IndicadoresService {
     private JaxbService jaxb;
     @Inject
     @RestClient
-    private IndicadoresClient client;
+    private IndicadorClient client;
 
     @Inject
     @ConfigProperty(name = "bccr.name")
@@ -35,7 +35,7 @@ public class IndicadoresService {
     @ConfigProperty(name = "bccr.token")
     private String token;
 
-    public IndicadoresService() {
+    public IndicadorService() {
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");//BCCR
         this.zoneId = ZoneId.of("-06:00");//CR
     }
