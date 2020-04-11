@@ -1,6 +1,7 @@
 package org.habv.bccr;
 
 import java.time.LocalDate;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,7 +20,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 @RegisterRestClient
-@RegisterProvider(IndicadorExceptionMapper.class)
+@RegisterProvider(BadRequestResponseExceptionMapper.class)
 @RegisterProvider(LocalDateParameterConverterProvider.class)
 public interface IndicadorClient {
 
@@ -32,6 +33,6 @@ public interface IndicadorClient {
             @QueryParam("SubNiveles") SubNivel subNiveles,
             @QueryParam("CorreoElectronico") String correoElectronico,
             @QueryParam("Token") String token
-    ) throws IndicadorException;
+    ) throws BadRequestException;
 
 }

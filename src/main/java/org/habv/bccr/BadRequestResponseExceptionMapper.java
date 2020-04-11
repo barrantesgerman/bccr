@@ -1,5 +1,6 @@
 package org.habv.bccr;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
 
@@ -7,12 +8,12 @@ import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
  *
  * @author Herman Barrantes
  */
-public class IndicadorExceptionMapper implements ResponseExceptionMapper<IndicadorException> {
+public class BadRequestResponseExceptionMapper implements ResponseExceptionMapper<BadRequestException> {
 
     @Override
-    public IndicadorException toThrowable(Response response) {
+    public BadRequestException toThrowable(Response response) {
         String mensaje = response.readEntity(String.class);
-        return new IndicadorException(
+        return new BadRequestException(
                 mensaje,
                 Response
                         .status(Response.Status.BAD_REQUEST)
