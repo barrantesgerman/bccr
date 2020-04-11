@@ -1,5 +1,6 @@
 package org.habv.bccr;
 
+import java.time.LocalDate;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,13 +20,14 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @Consumes({MediaType.APPLICATION_JSON})
 @RegisterRestClient
 @RegisterProvider(IndicadorExceptionMapper.class)
+@RegisterProvider(LocalDateParameterConverterProvider.class)
 public interface IndicadorClient {
 
     @GET
     public Response obtenerIndicadoresEconomicosXmlGet(
             @QueryParam("Indicador") Integer indicador,
-            @QueryParam("FechaInicio") String fechaInicio,
-            @QueryParam("FechaFinal") String fechaFinal,
+            @QueryParam("FechaInicio") @LocalDateFormat("dd/MM/yyyy") LocalDate fechaInicio,
+            @QueryParam("FechaFinal") @LocalDateFormat("dd/MM/yyyy") LocalDate fechaFinal,
             @QueryParam("Nombre") String nombre,
             @QueryParam("SubNiveles") SubNivel subNiveles,
             @QueryParam("CorreoElectronico") String correoElectronico,
