@@ -15,7 +15,7 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
     @Override
     public Response toResponse(WebApplicationException exception) {
         return Response
-                .status(exception.getResponse().getStatus())
+                .fromResponse(exception.getResponse())
                 .entity(new Payload(exception.getMessage()))
                 .build();
     }

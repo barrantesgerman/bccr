@@ -2,7 +2,6 @@ package org.habv.bccr;
 
 import java.time.OffsetDateTime;
 import javax.json.bind.annotation.JsonbDateFormat;
-import javax.json.bind.annotation.JsonbNumberFormat;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -29,8 +28,7 @@ public class Indicador {
     @XmlElement(name = "DES_FECHA")
     @XmlJavaTypeAdapter(OffsetDateTimeXmlAdapter.class)
     private OffsetDateTime fecha;
-    @Schema(description = "Valor del Indicador Económico", example = "575,12")
-    @JsonbNumberFormat(value = "#,##0.00")
+    @Schema(description = "Valor del Indicador Económico", type = SchemaType.NUMBER, example = "575.12")
     @XmlElement(name = "NUM_VALOR")
     private Double valor;
 
