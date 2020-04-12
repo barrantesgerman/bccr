@@ -37,13 +37,13 @@ public class IndicadorService {
         this.zoneId = ZoneId.of("-06:00");//CR
     }
 
-    public Response consultarIndicador(Integer indicador, LocalDate fechaInicial, LocalDate fechaFinal, SubNivel subNivel) throws Exception {
+    public Response consultarIndicador(Integer indicador, LocalDate fechaInicial, LocalDate fechaFinal, SubNivel subNivel) {
         Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, checkNull(fechaInicial), checkNull(fechaFinal), name, subNivel, email, token);
         Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));
         return Response.ok(indicadores.getIndicadores()).build();
     }
 
-    public Response consultarIndicador(Integer indicador) throws Exception {
+    public Response consultarIndicador(Integer indicador) {
         LocalDate today = LocalDate.now(zoneId);
         Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, today, today, name, SubNivel.N, email, token);
         Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));

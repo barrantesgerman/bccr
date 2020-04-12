@@ -54,7 +54,7 @@ public class IndicadorController {
                             implementation = Payload.class)))
     @GET
     @Path("/dolar/compra")
-    public Response dolarCompra() throws Exception {
+    public Response dolarCompra() {
         return indicadoresService.consultarIndicador(DOLAR_COMPRA);
     }
 
@@ -77,7 +77,7 @@ public class IndicadorController {
                             implementation = Payload.class)))
     @GET
     @Path("/dolar/venta")
-    public Response dolarVenta() throws Exception {
+    public Response dolarVenta() {
         return indicadoresService.consultarIndicador(DOLAR_VENTA);
     }
 
@@ -109,7 +109,7 @@ public class IndicadorController {
             @QueryParam("fechaFinal") LocalDate fechaFinal,
             @Parameter(description = "Subnivel de la consulta", schema = @Schema(enumeration = {"S", "N"}, type = SchemaType.STRING))
             @QueryParam("subNiveles") @DefaultValue("N") SubNivel subNiveles
-    ) throws Exception {
+    ) {
         return indicadoresService.consultarIndicador(indicador, fechaInicial, fechaFinal, subNiveles);
     }
 
