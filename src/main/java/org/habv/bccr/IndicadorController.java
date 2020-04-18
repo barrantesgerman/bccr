@@ -24,62 +24,13 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
  * @author Herman Barrantes
  */
 @RequestScoped
-@Path("/indicadores")
+@Path("indicadores")
 @Produces({MediaType.APPLICATION_JSON})
 @Tag(name = "Servicio de Indicadores Económicos", description = "Obtiene la información de los Indicadores Económicos del BCCR")
 public class IndicadorController {
 
-    private static final int DOLAR_COMPRA = 317;
-    private static final int DOLAR_VENTA = 318;
-
     @Inject
     private IndicadorService indicadoresService;
-
-    @Operation(description = "Obtiene el tipo de cambio del dolar para la compra para el día de hoy")
-    @APIResponse(
-            responseCode = "200",
-            description = "Exito al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(
-                    mediaType = MediaType.APPLICATION_JSON,
-                    schema = @Schema(
-                            type = SchemaType.OBJECT,
-                            implementation = Indicador.class)))
-    @APIResponse(
-            responseCode = "400",
-            description = "Error al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(
-                    mediaType = MediaType.APPLICATION_JSON,
-                    schema = @Schema(
-                            type = SchemaType.OBJECT,
-                            implementation = Payload.class)))
-    @GET
-    @Path("/dolar/compra")
-    public Response dolarCompra() {
-        return indicadoresService.consultarIndicador(DOLAR_COMPRA);
-    }
-
-    @Operation(description = "Obtiene el tipo de cambio del dolar para la venta para el día de hoy")
-    @APIResponse(
-            responseCode = "200",
-            description = "Exito al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(
-                    mediaType = MediaType.APPLICATION_JSON,
-                    schema = @Schema(
-                            type = SchemaType.OBJECT,
-                            implementation = Indicador.class)))
-    @APIResponse(
-            responseCode = "400",
-            description = "Error al obtener el tipo de cambio del dolar para el día de hoy",
-            content = @Content(
-                    mediaType = MediaType.APPLICATION_JSON,
-                    schema = @Schema(
-                            type = SchemaType.OBJECT,
-                            implementation = Payload.class)))
-    @GET
-    @Path("/dolar/venta")
-    public Response dolarVenta() {
-        return indicadoresService.consultarIndicador(DOLAR_VENTA);
-    }
 
     @Operation(description = "Obtiene el valor del Indicador Económico indicado")
     @APIResponse(
@@ -99,7 +50,7 @@ public class IndicadorController {
                             type = SchemaType.OBJECT,
                             implementation = Payload.class)))
     @GET
-    @Path("/{indicador}")
+    @Path("{indicador}")
     public Response indicador(
             @Parameter(description = "Numero de Indicador Económico", required = true)
             @PathParam("indicador") Integer indicador,
