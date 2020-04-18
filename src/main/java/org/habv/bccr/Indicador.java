@@ -23,7 +23,7 @@ public class Indicador {
     @JsonbTransient
     @XmlElement(name = "COD_INDICADORINTERNO")
     private Integer codigo;
-    @Schema(description = "Fecha del Indicador Económico", type = SchemaType.STRING, example = "2020-04-10T00:00:00-06:00")
+    @Schema(description = "Fecha del Indicador Económico", type = SchemaType.STRING, format = "date-time", example = "2020-04-10T00:00:00-06:00")
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ssXXX")
     @XmlElement(name = "DES_FECHA")
     @XmlJavaTypeAdapter(OffsetDateTimeXmlAdapter.class)
