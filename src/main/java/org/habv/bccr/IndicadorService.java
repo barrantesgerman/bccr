@@ -1,7 +1,7 @@
 package org.habv.bccr;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
@@ -14,8 +14,6 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
  */
 @ApplicationScoped
 public class IndicadorService {
-
-    private final ZoneId zoneId;
 
     @Inject
     private JaxbService jaxb;
@@ -33,25 +31,14 @@ public class IndicadorService {
     @ConfigProperty(name = "bccr.token")
     private String token;
 
-    public IndicadorService() {
-        this.zoneId = ZoneId.of("-06:00");//CR
-    }
-
-    public Response consultarIndicador(Integer indicador, LocalDate fechaInicial, LocalDate fechaFinal, SubNivel subNivel) {
+    public List<Indicador> consultarIndicador(Integer indicador, LocalDate fechaInicial, LocalDate fechaFinal, SubNivel subNivel) {
         Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, checkNull(fechaInicial), checkNull(fechaFinal), name, subNivel, email, token);
         Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));
-        return Response.ok(indicadores.getIndicadores()).build();
-    }
-
-    public Response consultarIndicador(Integer indicador) {
-        LocalDate today = LocalDate.now(zoneId);
-        Response xml = client.obtenerIndicadoresEconomicosXmlGet(indicador, today, today, name, SubNivel.N, email, token);
-        Indicadores indicadores = jaxb.parse(xml.readEntity(String.class));
-        return Response.ok(indicadores.getIndicadores().get(0)).build();
+        return indicadores.getIndicadores();
     }
 
     private LocalDate checkNull(LocalDate date) {
-        return date == null ? LocalDate.now(zoneId) : date;
+        return date == null ? LocalDate.now(Constantes.ZONE_ID) : date;
     }
 
 }

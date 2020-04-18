@@ -1,6 +1,7 @@
 package org.habv.bccr;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DefaultValue;
@@ -61,7 +62,8 @@ public class IndicadorController {
             @Parameter(description = "Subnivel de la consulta", schema = @Schema(enumeration = {"S", "N"}, type = SchemaType.STRING))
             @QueryParam("subNiveles") @DefaultValue("N") SubNivel subNiveles
     ) {
-        return indicadoresService.consultarIndicador(indicador, fechaInicial, fechaFinal, subNiveles);
+        List<Indicador> indicadores = indicadoresService.consultarIndicador(indicador, fechaInicial, fechaFinal, subNiveles);
+        return Response.ok(indicadores).build();
     }
 
 }

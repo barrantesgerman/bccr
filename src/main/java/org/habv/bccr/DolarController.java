@@ -1,5 +1,6 @@
 package org.habv.bccr;
 
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -47,7 +48,8 @@ public class DolarController {
     @GET
     @Path("compra")
     public Response dolarCompra() {
-        return indicadoresService.consultarIndicador(Constantes.DOLAR_COMPRA);
+        List<Indicador> indicadores = indicadoresService.consultarIndicador(Constantes.DOLAR_COMPRA, null, null, SubNivel.N);
+        return Response.ok(indicadores.get(0)).build();
     }
 
     @Operation(description = "Obtiene el tipo de cambio del dolar para la venta para el día de hoy")
@@ -70,7 +72,8 @@ public class DolarController {
     @GET
     @Path("venta")
     public Response dolarVenta() {
-        return indicadoresService.consultarIndicador(Constantes.DOLAR_VENTA);
+        List<Indicador> indicadores = indicadoresService.consultarIndicador(Constantes.DOLAR_VENTA, null, null, SubNivel.N);
+        return Response.ok(indicadores.get(0)).build();
     }
 
 }
