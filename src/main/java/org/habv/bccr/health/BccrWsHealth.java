@@ -8,7 +8,9 @@ import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
 import org.eclipse.microprofile.health.Liveness;
+import org.habv.bccr.Constantes;
 import org.habv.bccr.IndicadorService;
+import org.habv.bccr.SubNivel;
 
 /**
  *
@@ -25,14 +27,11 @@ public class BccrWsHealth implements HealthCheck {
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("BCCR-WS");
         try {
-            Response response = indicadoresService.consultarIndicador(317);
-            int responseCode = response.getStatus();
-            String responseMessage = response.getStatusInfo().getReasonPhrase();
-            boolean state = responseCode == Response.Status.OK.getStatusCode();
+            indicadoresService.consultarIndicador(Constantes.DOLAR_COMPRA, null, null, SubNivel.N);
             return responseBuilder
-                    .withData("responseCode", responseCode)
-                    .withData("responseMessage", responseMessage)
-                    .state(state)
+                    .withData("responseCode", Response.Status.OK.getStatusCode())
+                    .withData("responseMessage", Response.Status.OK.getReasonPhrase())
+                    .up()
                     .build();
         } catch (WebApplicationException ex) {
             Response response = ex.getResponse();
