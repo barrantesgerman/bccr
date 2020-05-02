@@ -4,88 +4,76 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="css/custom.css">
         <title>BCCR</title>
-
-        <style>
-            body {
-                padding-top: 4.5rem;
-            }
-        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">BCCR</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="container">
+                <a class="navbar-brand" href="#">BCCR</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbars">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="api/openapi-ui" target="_blank">Documentación</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="openapi" target="_blank">OpenAPI</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="health" target="_blank">Health</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="metrics" target="_blank">Metrics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api/dolar/compra" target="_blank">Dolar Compra</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api/dolar/venta" target="_blank">Dolar Venta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api/indicadores/333" target="_blank">Euro respecto al Dolar</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbars">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.bccr.fi.cr/seccion-indicadores-economicos/servicio-web" target="_blank">Suscripción</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx?op=ObtenerIndicadoresEconomicosXML" target="_blank">Servicio Web</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api/openapi-ui" target="_blank">Swagger UI</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-
         <main role="main">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2>Documentación</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="api/openapi-ui" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>OpenAPI</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="openapi" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Health</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="health" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Metrics</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="metrics" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Dolar Compra</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="api/dolar/compra" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Dolar Venta</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="api/dolar/venta" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Euro respecto al Dolar</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non dictum erat, a commodo mauris. Aliquam condimentum vulputate purus, in pharetra neque. Nulla aliquam vitae odio sed molestie.</p>
-                        <p><a class="btn btn-secondary" href="api/indicadores/333" target="_blank" role="button">Ver detalles &raquo;</a></p>
-                    </div>
+
+                <div class="jumbotron">
+                    <h1>BCCR</h1>
+                    <p class="lead text-justify">El objetivo de este proyecto es probar las diferentes API's que provee el proyecto <a href="https://microprofile.io/">Microprofile</a> creando una aplicación que permita consultar el <a href="https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx">Servicio Web</a> de indicadores económicos del Banco Central de Costa Rica (BCCR).</p>
                 </div>
+
+                <h2>Sobre el Servicio Web de Indicadores Económicos</h2>
+                <p>El Banco Central de Costa Rica provee un <a href="https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx">servicio web</a> para consultar los diferentes indicadores económicos y una <a href="https://gee.bccr.fi.cr/indicadoreseconomicos/Documentos/DocumentosMetodologiasNotasTecnicas/Webservices_de_indicadores_economicos.pdf">guía de uso</a> del mismo.</p>
+                <p>Para poder utilizarlo se requiere un token de acceso que se obtiene al <a href="https://www.bccr.fi.cr/seccion-indicadores-economicos/servicio-web">suscribirce</a> al servicio, este token se puede <a href="https://www.bccr.fi.cr/seccion-indicadores-economicos/servicio-web/recuperar-token">recuperar</a> o <a href="https://www.bccr.fi.cr/seccion-indicadores-economicos/servicio-web/cancelar-token">cancelar</a> en cualquier momento que se requiera.</p>
+                <p>Adicionalmente, se puede descargar un listado de <a href="https://gee.bccr.fi.cr/Indicadores/Suscripciones/UI/ConsultaIndicadores/ObtenerArchivo">indicadores públicos</a> que se pueden consumir por el servicio web.</p>
+
+                <h2>Sobre Microprofile y su uso en el proyecto</h2>
+                <p>El proyecto usa <a href="https://download.eclipse.org/microprofile/microprofile-3.2/microprofile-spec-3.2.html">Microprofile 3.2</a> y las API's que se detallan a continuación.</p>
+
+                <h4>Config <span class="badge badge-info">1.3</span></h4>
+                <p>El API de Config provee la capacidad de obtener valores para configuración del sistema, para este caso en específico se usan tres valores requeridos para interactuar con el servicio web del BCCR, que corresponden a los valores para <strong>Nombre</strong>, <strong>Correo</strong> y <strong>Token</strong>, estos se encuentran en el archivo de <a href="https://github.com/barrantesgerman/bccr/blob/master/src/main/resources/META-INF/microprofile-config.properties#L2-L4">configuración</a> y son sobre escritos por las variables de entorno en el servidor.</p>
+                <pre><code>bccr.name=&lt;NOMBRE&gt;
+bccr.email=&lt;CORREO&gt;
+bccr.token=&lt;TOKEN&gt;</code></pre>
+                <a href="https://github.com/barrantesgerman/bccr/blob/master/src/main/resources/META-INF/microprofile-config.properties#L2-L4">Configuración</a>
+                <a href="https://download.eclipse.org/microprofile/microprofile-config-1.3/">Documentación</a>
+
+                <h4 class="mt-4">OpenAPI <span class="badge badge-info">1.1</span></h4>
+                <p>El API de OpenAPI provee la capacidad para documentar los diferentes Endpoints de los servicios Restful, adicionalmente en este proyecto se usa una extensión llamada <a href="https://github.com/microprofile-extensions/openapi-ext">OpenAPI-UI</a> que brinda una interfaz gráfica al estilo Swagger-UI para ver y probar los Endpoints dinámicamente.</p>
+                <a href="openapi">Ver</a>
+                <a href="api/openapi-ui">Swagger UI</a>
+                <a href="https://download.eclipse.org/microprofile/microprofile-open-api-1.1/">Documentación</a>
+
+                <h4 class="mt-4">Healt <span class="badge badge-info">2.1</span></h4>
+                <p>El API Healt provee la capacidad de crear Endpoints para monitorear la disponibilidad de la aplicación, para este proyecto se crea un monitor que realiza una petición a un indicador económico para ver la disponibilidad del servicio web, si la respuesta tiene un código de estado <code>200 OK</code> el servicio web se encuentra arriba, en caso contrario el servicio web se encuentra abajo.</p>
+                <a href="health" >Ver</a>
+                <a href="https://download.eclipse.org/microprofile/microprofile-health-2.1/">Documentación</a>
+
+                <h4 class="mt-4">Metrics <span class="badge badge-info">2.2</span></h4>
+                <p>El API Metrics provee la capacidad de obtener métricas de rendimiento de las diferentes partes que componen la aplicación, en este caso se mide el tiempo de respuesta de los Endpoints y cliente de Rest.</p>
+                <a href="metrics">Ver</a>
+                <a href="https://download.eclipse.org/microprofile/microprofile-metrics-2.2/">Documentación</a>
+                
+                <h4 class="mt-4">Rest Client <span class="badge badge-info">1.3</span></h4>
+                <p>El API Rest Client provee la capacidad de crear clientes para servicios web Restful de manera sencilla, el servicio web de indicadores económicos del BCCR aparte de ser un servicio SOAP permite adicionalmente hacer peticiones mediante <code>GET</code> y <code>POST</code>, para esta aplicación se crear un cliente que llama al Endpoint de <code>GET</code>, la respuesta en XML del BCCR se convierte a objeto con <a href="https://javaee.github.io/jaxb-v2/">JAXB</a> y luego de objeto a JSON usando <a href="https://javaee.github.io/jsonb-spec/">JSON-B</a>.</p>
+                <a href="https://github.com/barrantesgerman/bccr/blob/master/src/main/java/org/habv/bccr/IndicadorClient.java">Cliente</a>
+                <a href="https://download.eclipse.org/microprofile/microprofile-rest-client-1.3/">Documentación</a>
                 <hr>
             </div> <!-- /container -->
         </main>
@@ -93,7 +81,7 @@
         <footer class="container">
             <p>&copy; <a href="https://habv.org" target="_blank">habv.org</a> 2020</p>
         </footer>
-        
+
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
