@@ -16,7 +16,7 @@ public class Payload implements Serializable {
 
     @Schema(description = "Detalle de la respuesta", example = "Error la fecha inicial debe ser menor que la fecha final.")
     private final String mensaje;
-    @Schema(description = "Fecha de la respuesta", type = SchemaType.STRING, example = "2020-04-10T13:15:35-06:00")
+    @Schema(description = "Fecha de la respuesta", type = SchemaType.STRING, format = "date-time", example = "2020-04-10T13:15:35-06:00")
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ssXXX")
     private final OffsetDateTime fecha;
 

@@ -18,7 +18,7 @@ public class LocalDateParameterConverterProvider implements ParamConverterProvid
     @Override
     public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType, Annotation[] annotations) {
         if (LocalDate.class.equals(rawType)) {
-            String pattern = "yyyy-MM-dd";
+            String pattern = Constantes.PATRON_FECHA;
             for (Annotation annotation : annotations) {
                 if (LocalDateFormat.class.equals(annotation.annotationType())) {
                     pattern = ((LocalDateFormat) annotation).value();

@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 public @interface LocalDateFormat {
 
-    String value() default "yyyy-MM-dd";
+    String value() default Constantes.PATRON_FECHA;
 }

@@ -53,7 +53,7 @@ public class IndicadorController {
     @GET
     @Path("{indicador}")
     public Response indicador(
-            @Parameter(description = "Numero de Indicador Económico", required = true)
+            @Parameter(description = "Numero de Indicador Económico", required = true, schema = @Schema(type = SchemaType.INTEGER))
             @PathParam("indicador") Integer indicador,
             @Parameter(description = "Fecha inicial de la consulta", schema = @Schema(format = "date", type = SchemaType.STRING))
             @QueryParam("fechaInicial") LocalDate fechaInicial,
