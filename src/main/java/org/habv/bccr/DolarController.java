@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -31,6 +32,7 @@ public class DolarController {
     @Inject
     private IndicadorService indicadoresService;
 
+    @Timed
     @Operation(description = "Obtiene el tipo de cambio del dolar para la compra para el día de hoy")
     @APIResponse(
             responseCode = "200",
@@ -55,6 +57,7 @@ public class DolarController {
         return Response.ok(indicadores.get(0)).build();
     }
 
+    @Timed
     @Operation(description = "Obtiene el tipo de cambio del dolar para la venta para el día de hoy")
     @APIResponse(
             responseCode = "200",
@@ -79,6 +82,7 @@ public class DolarController {
         return Response.ok(indicadores.get(0)).build();
     }
 
+    @Timed
     @Operation(description = "Obtiene el tipo de cambio del dolar para la compra para un rango de fechas")
     @APIResponse(
             responseCode = "200",
@@ -108,6 +112,7 @@ public class DolarController {
         return Response.ok(indicadores).build();
     }
 
+    @Timed
     @Operation(description = "Obtiene el tipo de cambio del dolar para la venta para un rango de fechas")
     @APIResponse(
             responseCode = "200",

@@ -1,16 +1,16 @@
-package org.habv.bccr.health;
+package org.habv.bccr;
 
+import java.time.LocalDate;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
 import org.eclipse.microprofile.health.Liveness;
-import org.habv.bccr.Constantes;
-import org.habv.bccr.IndicadorService;
-import org.habv.bccr.SubNivel;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 /**
  *
@@ -21,17 +21,32 @@ import org.habv.bccr.SubNivel;
 public class BccrWsHealth implements HealthCheck {
 
     @Inject
-    private IndicadorService indicadoresService;
+    @RestClient
+    private IndicadorClient client;
+
+    @Inject
+    @ConfigProperty(name = "bccr.name")
+    private String name;
+    @Inject
+    @ConfigProperty(name = "bccr.email")
+    private String email;
+    @Inject
+    @ConfigProperty(name = "bccr.token")
+    private String token;
 
     @Override
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("BCCR-WS");
         try {
-            indicadoresService.consultarIndicador(Constantes.DOLAR_COMPRA, null, null, SubNivel.N);
+            LocalDate today = LocalDate.now(Constantes.ZONE_ID);
+            Response response = client.obtenerIndicadoresEconomicosXmlGet(Constantes.DOLAR_COMPRA, today, today, name, SubNivel.N, email, token);
+            int responseCode = response.getStatus();
+            String responseMessage = response.getStatusInfo().getReasonPhrase();
+            boolean status = Response.Status.OK.getStatusCode() == responseCode;
             return responseBuilder
-                    .withData("responseCode", Response.Status.OK.getStatusCode())
-                    .withData("responseMessage", Response.Status.OK.getReasonPhrase())
-                    .up()
+                    .withData("responseCode", responseCode)
+                    .withData("responseMessage", responseMessage)
+                    .state(status)
                     .build();
         } catch (WebApplicationException ex) {
             Response response = ex.getResponse();
