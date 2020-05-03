@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -33,6 +34,7 @@ public class IndicadorController {
     @Inject
     private IndicadorService indicadoresService;
 
+    @Timed
     @Operation(description = "Obtiene el valor del Indicador Económico indicado")
     @APIResponse(
             responseCode = "200",
