@@ -22,7 +22,7 @@ public class Payload implements Serializable {
 
     public Payload(String mensaje, Object... parametros) {
         this.mensaje = String.format(mensaje, parametros);
-        this.fecha = OffsetDateTime.now(ZoneId.of("-06:00"));
+        this.fecha = OffsetDateTime.now(Constantes.ZONE_ID);
     }
 
     public String getMensaje() {
